@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Player movement Variables
+    // Player movement and jetpack Variables
     private Vector2 jetpackPower = new Vector2(0f, 500f);
     private bool jetpackUsable = true;
-    private float jetpackCooldown = 0.2f;
+    private float jetpackCooldown = 0.5f;
+    private Coroutine jetpackCooldownCoroutine;
 
     // Player component Variables
     private Rigidbody2D playerRb;
@@ -26,7 +27,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && jetpackUsable)
         {
+            //adds upwards moment to player and starts cooldown courtine
             playerRb.AddForce(jetpackPower);
+            StartCoroutine(JetpackCooldownCoroutine());
         }
+    }
+
+
+    // Courtine to manage the jetpack cooldown to prevent it from being spammed
+    private IEnumerator JetpackCooldownCoroutine()
+    {
+        jetpackUsable = false;
+        yield return new WaitForSeconds(jetpackCooldown);
+        jetpackUsable = true;
     }
 }
