@@ -11,6 +11,8 @@ public class BullletSpawner : MonoBehaviour
 
     // variables for controlling spawnrate and position
     private Coroutine bulletSpawnCoroutine;
+    [SerializeField] private float upperSpawnTime;
+    [SerializeField] private float lowerSpawnTime;
     private float spawnTime;
     private Vector2 spawnPos;
 
@@ -28,7 +30,7 @@ public class BullletSpawner : MonoBehaviour
     {
         while (true)
         {
-            spawnTime = Random.Range(0.3f, 1.5f);
+            spawnTime = Random.Range(lowerSpawnTime, upperSpawnTime);
             spawnPos = new Vector2(transform.position.x, Random.Range(upperLimit.position.y, lowerLimit.position.y));
             yield return new WaitForSeconds(spawnTime);
             Instantiate(bulletPrefab, spawnPos, transform.rotation);
