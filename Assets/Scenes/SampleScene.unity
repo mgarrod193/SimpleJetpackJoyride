@@ -516,6 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d1725edf506e674381595d4324b7854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jetpack: {fileID: 2090982887}
 --- !u!50 &1120505898
 Rigidbody2D:
   serializedVersion: 4
@@ -911,6 +912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2090982885}
   - component: {fileID: 2090982886}
+  - component: {fileID: 2090982887}
   m_Layer: 0
   m_Name: Jetpack
   m_TagString: Untagged
@@ -986,6 +988,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2090982887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090982884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a49c2a7b073a9d42a3d6bcd7b5a36f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jetpackBulletPrefab: {fileID: 5111517533907797107, guid: 299a9f8f2f95e2b448c64479ad531e5f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

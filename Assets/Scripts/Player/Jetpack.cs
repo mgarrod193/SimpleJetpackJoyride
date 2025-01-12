@@ -16,6 +16,6 @@ public class Jetpack : MonoBehaviour
 
     public void Fire()
     {
-        Instantiate(jetpackBulletPrefab, FiringPos.transform, FiringPos.rotation);
+        Instantiate(jetpackBulletPrefab, FiringPos.position, FiringPos.rotation);
     }
 }
