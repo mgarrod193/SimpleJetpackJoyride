@@ -14,4 +14,13 @@ public class JetpackBullet : MonoBehaviour
         jetpackBulletrb.velocity = new Vector2(0, -speed);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            Destroy(collision.gameObject);
+        }
+        Destroy(gameObject);
+    }
+
 }
