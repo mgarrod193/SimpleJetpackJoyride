@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -29,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //adds upwards moment to player and starts cooldown courtine
             playerRb.AddForce(jetpackPower);
-            StartCoroutine(JetpackCooldownCoroutine());
+            jetpackCooldownCoroutine = StartCoroutine(JetpackCooldownCoroutine());
         }
     }
 
