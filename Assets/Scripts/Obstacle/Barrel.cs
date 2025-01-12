@@ -13,6 +13,7 @@ public class Barrel : MonoBehaviour
     void Start()
     {
         objRb = GetComponent<Rigidbody2D>();
+        Destroy(gameObject, 10);
     }
 
     // Update is called once per frame

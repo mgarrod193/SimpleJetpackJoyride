@@ -17,12 +17,12 @@ public class BarrellSpawner : MonoBehaviour
     }
 
 
-
+    // spawns a barrel based on the random value generated for the spawnTimer
     private IEnumerator StartSpawn()
     {
         while (true)
         {
-            spawnTimer = Random.Range(1.0f, 5.0f);
+            spawnTimer = Random.Range(0.5f, 3.0f);
             yield return new WaitForSeconds(spawnTimer);
             Instantiate(barrelPrefab, transform.position, transform.rotation);
         }
