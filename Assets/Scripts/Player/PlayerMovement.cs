@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     // Player movement and jetpack Variables
     [SerializeField] private Vector2 jetpackPower = new Vector2(0f, 250f);
     private bool jetpackUsable = true;
-    private float jetpackCooldown = 0.5f;
+    private float jetpackCooldown = 0.2f;
     private Coroutine jetpackCooldownCoroutine;
 
     // Player component Variables
