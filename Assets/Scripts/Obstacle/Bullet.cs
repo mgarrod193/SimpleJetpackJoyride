@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
+    //variables for bullet movement
     private Rigidbody2D bulletRB;
     private float speed;
     private float bulletScale;
+
+    //reference to game manager
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     // Gives the bullet it's speed when spawned
     void Start()
     {
+        gameManager = GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>();
+
         bulletRB = GetComponent<Rigidbody2D>();
 
         //controls buttlet speed
@@ -33,6 +39,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Destroy(collision.gameObject);
+            gameManager.setPlayerDead();
         }
     }
 
