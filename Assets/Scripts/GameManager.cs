@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     private int updateScoreAmount = 1;
     private Coroutine updateScore;
 
+    //references to extra spawners
+    [SerializeField] GameObject ExtraSpanwer1;
+
     //creates singleton of game manager
     void Awake()
     {
@@ -51,6 +54,7 @@ public class GameManager : MonoBehaviour
             if (score == 150)
             {
                 updateScoreAmount = 2;
+                ExtraSpanwer1.SetActive(true);
             }
         }
     }
