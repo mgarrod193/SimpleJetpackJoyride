@@ -41,12 +41,17 @@ public class GameManager : MonoBehaviour
     }
 
     //updates scores by an amount after a certain dealy while player is alive
+    //score increases by larger amounts the longer the game lasts
     private IEnumerator UpdateScore()
     {
         while (isPlayerAlive)
         {
             yield return new WaitForSeconds(scoreUpdateTimer);
             score += updateScoreAmount;
+            if (score == 150)
+            {
+                updateScoreAmount = 2;
+            }
         }
     }
 
