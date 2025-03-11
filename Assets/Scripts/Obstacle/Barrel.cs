@@ -28,14 +28,24 @@ public class Barrel : MonoBehaviour
     }
 
 
-    //kills player when object colllides with player and sets the player alive status to dead
+    //kills player when object colllides with player and ends the game if player does not have shield
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "Player" )
+        if (collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);
-            gameManager.setPlayerDead();
+            PlayerMovement Player = collision.gameObject.GetComponent<PlayerMovement>();
+            if (Player.hasShield)
+            {
+                Player.disableShield();
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+                gameManager.setPlayerDead();
+
+            }
+            Destroy(this.gameObject);
         }
     }
 }

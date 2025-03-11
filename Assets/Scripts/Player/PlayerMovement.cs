@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerRb;
 
 
+    //vairable for powerup
+    public bool hasShield = false;
+    [SerializeField] GameObject shield;
+
     // Variables for other scripts
     [SerializeField] private Jetpack jetpack;
 
@@ -22,7 +26,18 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+    }
 
+    public void enableShield()
+    {
+        hasShield = true;
+        shield.SetActive(true);
+    }
+
+    public void disableShield()
+    {
+        hasShield = false;
+        shield.SetActive(false);
     }
 
     // Update is called once per frame

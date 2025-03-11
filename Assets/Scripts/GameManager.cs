@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     //variables for managing score
     public int score;
-    private static float scoreUpdateTimer = 0.5f;
+    private static float scoreUpdateTimer = 0.25f;
     private int updateScoreAmount = 1;
     private Coroutine updateScore;
 
@@ -66,22 +66,22 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(scoreUpdateTimer);
             score += updateScoreAmount;
             updateScoreText();
-            if (score == 150)
+            if (score == 300)
             {
                 updateScoreAmount = 2;
                 ExtraSpanwer1.SetActive(true);
             }
-            if (score == 400)
+            if (score == 800)
             {
                 updateScoreAmount = 3;
                 ExtraSpanwer2.SetActive(true);
             }
-            if (score == 900)
+            if (score == 1500)
             {
                 updateScoreAmount = 4;
                 ExtraBarrellSpawner1.SetActive(true);
             }
-            if (score == 1500)
+            if (score == 2200)
             {
                 updateScoreAmount += 5;
                 ExtraSpanwer3.SetActive(true);

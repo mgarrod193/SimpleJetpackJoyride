@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -32,14 +33,24 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 5);
     }
 
-    //kills player if bullet collides with player
+    //kills player if bullet collides with player if the player does not have a shield.
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);
-            gameManager.setPlayerDead();
+            PlayerMovement Player = collision.gameObject.GetComponent<PlayerMovement>();
+            if (Player.hasShield)
+            {
+                Player.disableShield();
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+                gameManager.setPlayerDead();
+
+            }
+            Destroy(this.gameObject);
         }
     }
 
