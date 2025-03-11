@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,8 +19,15 @@ public class GameManager : MonoBehaviour
     private int updateScoreAmount = 1;
     private Coroutine updateScore;
 
+    //reference to Hud elemtents
+    [SerializeField] TextMeshProUGUI ScoreText;
+
     //references to extra spawners
     [SerializeField] GameObject ExtraSpanwer1;
+    [SerializeField] GameObject ExtraSpanwer2;
+    [SerializeField] GameObject ExtraSpanwer3;
+    [SerializeField] GameObject ExtraBarrellSpawner1;
+
 
     //creates singleton of game manager
     void Awake()
@@ -43,6 +52,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(RestartScene());
     }
 
+    public void updateScoreText()
+    {
+        ScoreText.text = "Score: " + score.ToString();
+    }
+
     //updates scores by an amount after a certain dealy while player is alive
     //score increases by larger amounts the longer the game lasts
     private IEnumerator UpdateScore()
@@ -51,10 +65,26 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(scoreUpdateTimer);
             score += updateScoreAmount;
+            updateScoreText();
             if (score == 150)
             {
                 updateScoreAmount = 2;
                 ExtraSpanwer1.SetActive(true);
+            }
+            if (score == 400)
+            {
+                updateScoreAmount = 3;
+                ExtraSpanwer2.SetActive(true);
+            }
+            if (score == 900)
+            {
+                updateScoreAmount = 4;
+                ExtraBarrellSpawner1.SetActive(true);
+            }
+            if (score == 1500)
+            {
+                updateScoreAmount += 5;
+                ExtraSpanwer3.SetActive(true);
             }
         }
     }

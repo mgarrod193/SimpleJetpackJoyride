@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class BarrellSpawner : MonoBehaviour
 {
-
+    //variables for controlling spawn of barrells
     [SerializeField] GameObject barrelPrefab;
+    [SerializeField] float lowerSpawnTime;
+    [SerializeField] float upperSpawnTime;
     private float spawnTimer;
     private Coroutine startSpawn;
 
@@ -22,7 +24,7 @@ public class BarrellSpawner : MonoBehaviour
     {
         while (true)
         {
-            spawnTimer = Random.Range(0.5f, 3.0f);
+            spawnTimer = Random.Range(lowerSpawnTime, upperSpawnTime);
             yield return new WaitForSeconds(spawnTimer);
             Instantiate(barrelPrefab, transform.position, transform.rotation);
         }
