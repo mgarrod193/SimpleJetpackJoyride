@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4975599319025992076}
   - component: {fileID: 1234844871847100109}
   - component: {fileID: 8182918138652433197}
+  - component: {fileID: 18678307622120604}
   m_Layer: 0
   m_Name: Barrels
   m_TagString: Obstacle
@@ -163,3 +164,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 100
   speed: {x: -5, y: 0}
+--- !u!114 &18678307622120604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3148301501655833256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bfc0a7050caa2e47ab0870c16db9bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 2

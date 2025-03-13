@@ -52,9 +52,40 @@ public class GameManager : MonoBehaviour
         StartCoroutine(RestartScene());
     }
 
-    public void updateScoreText()
+    public void UpdateScoreText()
     {
         ScoreText.text = "Score: " + score.ToString();
+    }
+
+    public void IncreaseScore(int points)
+    {
+        score += points;
+        CheckScore();
+        print("object Destroyed Points Increased");
+    }
+
+    private void CheckScore()
+    {
+        if (score == 300)
+        {
+            updateScoreAmount = 2;
+            ExtraSpanwer1.SetActive(true);
+        }
+        if (score == 800)
+        {
+            updateScoreAmount = 3;
+            ExtraSpanwer2.SetActive(true);
+        }
+        if (score == 1500)
+        {
+            updateScoreAmount = 4;
+            ExtraBarrellSpawner1.SetActive(true);
+        }
+        if (score == 2200)
+        {
+            updateScoreAmount += 5;
+            ExtraSpanwer3.SetActive(true);
+        }
     }
 
     //updates scores by an amount after a certain dealy while player is alive
@@ -65,27 +96,8 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(scoreUpdateTimer);
             score += updateScoreAmount;
-            updateScoreText();
-            if (score == 300)
-            {
-                updateScoreAmount = 2;
-                ExtraSpanwer1.SetActive(true);
-            }
-            if (score == 800)
-            {
-                updateScoreAmount = 3;
-                ExtraSpanwer2.SetActive(true);
-            }
-            if (score == 1500)
-            {
-                updateScoreAmount = 4;
-                ExtraBarrellSpawner1.SetActive(true);
-            }
-            if (score == 2200)
-            {
-                updateScoreAmount += 5;
-                ExtraSpanwer3.SetActive(true);
-            }
+            UpdateScoreText();
+            CheckScore();
         }
     }
 

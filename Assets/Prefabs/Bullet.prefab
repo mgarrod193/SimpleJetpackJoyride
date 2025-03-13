@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 440436663599054232}
   - component: {fileID: 7416839422195004792}
   - component: {fileID: 8035205619262236005}
+  - component: {fileID: 8927840179048853702}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Obstacle
@@ -161,3 +162,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ab413bcfe42c74883cd97d203a934c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8927840179048853702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2520111900084037866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bfc0a7050caa2e47ab0870c16db9bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 5

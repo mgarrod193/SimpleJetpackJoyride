@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     //reference to game manager
     private GameManager gameManager;
 
+
     // Start is called before the first frame update
     // Gives the bullet it's speed when spawned
     void Start()
@@ -53,5 +54,7 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+
 
 }
