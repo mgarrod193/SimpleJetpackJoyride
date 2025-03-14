@@ -9,6 +9,8 @@ public class JetpackBullet : MonoBehaviour
 
 
     private GameManager gameManager;
+
+    [SerializeField] ParticleSystem explosionParticlePrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class JetpackBullet : MonoBehaviour
         if (collision.gameObject.tag == "Obstacle")
         {
             gameManager.IncreaseScore(collision.gameObject.GetComponent<Points>().GetPoints());
+            Instantiate(explosionParticlePrefab, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
             Destroy(collision.gameObject);
         }
         Destroy(gameObject);

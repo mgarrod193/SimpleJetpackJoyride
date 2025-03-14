@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  explosionParticlePrefab: {fileID: 1912190679139909737, guid: 82cf9cdf4c61b854385710aac432bbf1, type: 3}
 --- !u!50 &6287351115841946648
 Rigidbody2D:
   serializedVersion: 4
