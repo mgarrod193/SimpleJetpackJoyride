@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.SearchService;
@@ -15,12 +16,17 @@ public class GameManager : MonoBehaviour
 
     //variables for managing score
     public int score;
+    public int highScore;
     private static float scoreUpdateTimer = 0.25f;
     private int updateScoreAmount = 1;
     private Coroutine updateScore;
 
+    //reference for highscore manager;
+    private HighScoreManager highScoreManager;
+
     //reference to Hud elemtents
     [SerializeField] TextMeshProUGUI ScoreText;
+    [SerializeField] TextMeshProUGUI highScoreText;
 
     //references to extra spawners
     [SerializeField] GameObject ExtraSpanwer1;
@@ -38,20 +44,24 @@ public class GameManager : MonoBehaviour
    //Called when game starts
     private void Start()
     {
+        highScoreManager = FindObjectOfType<HighScoreManager>().GetComponent<HighScoreManager>();
         score = 0;
+        SetHighScore();
         isPlayerAlive = true;
         updateScore = StartCoroutine(UpdateScore());
     }
 
+
     //called when player dies
     public void setPlayerDead()
     {
+        StopCoroutine(updateScore);
         isPlayerAlive = false;
-        print("player is dead");
-        print(score);
         StartCoroutine(RestartScene());
     }
 
+
+    //updates score text
     public void UpdateScoreText()
     {
         ScoreText.text = "Score: " + score.ToString();
@@ -64,6 +74,7 @@ public class GameManager : MonoBehaviour
         print("object Destroyed Points Increased");
     }
 
+    // checks score and aticates additional spawners based on current score
     private void CheckScore()
     {
         if (score == 300)
@@ -88,6 +99,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    //checks current score against high score and sets correct high score
+    private void SetHighScore()
+    {
+            highScoreText.text = "High Score: " + highScoreManager.GetHighScore().ToString();
+    }
+
     //updates scores by an amount after a certain dealy while player is alive
     //score increases by larger amounts the longer the game lasts
     private IEnumerator UpdateScore()
@@ -104,6 +122,8 @@ public class GameManager : MonoBehaviour
     //called to restart scene a 3 seconds after player dies.
     private IEnumerator RestartScene()
     {
+        highScoreManager.SaveHighScore(score);
+        SetHighScore();
         yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
